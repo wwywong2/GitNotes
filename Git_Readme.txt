@@ -1,7 +1,32 @@
 
 Basic steps
 =========================================================
-git init
+1.) start
+git init - create the folder structure
+git status - check status
+
+2.) add files to stage
+git add file.txt - add file to staging - now it is tracked (to be committed)
+git add -A . (add all recursively, and also file deletions are included)
+git add '*.txt' (need quote so Git can receive the wildcard before shell, and search recursively)
+
+git rm --cached file.txt (to unstage?)
+git reset file.txt (to remove a file from staging)
+
+3.) commits
+git commit -m "Add title"
+
+git log (show commit history)
+git log --summary (more detail)
+
+4.) push to remote
+git remote add origin "https://github.com/github-site/try.git" (origin can be any name but first is origin)
+git push -u origin master (name of out remote=origin, name of default local branch=master; u to remember settings)
+git push (next time)
+
+5.) pull from remote
+
+
 
 
 
