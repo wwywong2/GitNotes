@@ -53,7 +53,6 @@ git commit -m "some title"
 or
 git commit -am "delete stuff" (this will remove deleted files plus commit)
 
-
 11.) go back to master branch to merge chaages
 git checkout master
 
