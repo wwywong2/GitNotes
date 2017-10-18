@@ -25,9 +25,47 @@ git push -u origin master (name of out remote=origin, name of default local bran
 git push (next time)
 
 5.) pull from remote
+git pull origin master
+or 
+git stash (to stash your changes, and...)
+git stash apply (call this to re-apply changes after pull)
+
+6.) diff
+git diff HEAD
+git diff --staged
+
+7.) removing files from staged
+git reset file.txt
+
+8.) undo changes
+git checkout -- file.txt (-- is placeholder to tell git no option)
+
+9.) branch
+git branch bname
+or
+git checkout -b new_branch (= git branch new_branch + git checkout new_branch)
+
+10.) remove files from local + staged
+git rm '*.txt'
+or git rm -r foldername (to recursively remove folders and files)
+then commit by
+git commit -m "some title"
+or
+git commit -am "delete stuff" (this will remove deleted files plus commit)
 
 
+11.) go back to master branch to merge chaages
+git checkout master
 
+12.) merge
+git merge clean_up
+
+13.) now remove branch that is already merged
+git branch -d bname (this only work if branch has been merged)
+git branch -d -f bname (this will work even if banch hasn't been merged)
+
+14.) push back
+git push (no need param this time)
 
 
 
