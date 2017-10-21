@@ -10,7 +10,7 @@ git add file.txt - add file to staging - now it is tracked (to be committed)
 git add -A . (add all recursively, and also file deletions are included)
 git add '*.txt' (need quote so Git can receive the wildcard before shell, and search recursively)
 
-git rm --cached file.txt (to unstage?)
+git rm --cached file.txt (remove from staged, but keep in working dir)
 git reset file.txt (to remove a file from staging)
 
 3.) commits
@@ -21,7 +21,7 @@ git log --summary (more detail)
 
 4.) push to remote
 git remote add origin "https://github.com/github-site/try.git" (origin can be any name but first is origin)
-git push -u origin master (name of out remote=origin, name of default local branch=master; u to remember settings)
+git push -u origin master (name of remote=origin, name of default local branch=master; u to remember settings)
 git push (next time)
 
 5.) pull from remote
@@ -67,8 +67,10 @@ git branch -d -f bname (this will work even if banch hasn't been merged)
 git push (no need param this time)
 
 
-
-
+Cycle of file in git (push is to update cloud)
+=========================================================
+untracked (new file) -add->   staged/tracked-modified (added)   -commit-> staged/tracked-unmodified (committed) ---push to github--->
+untracked (removed) <-remove- staged/tracked-modified (changed) <-modify- staged/tracked-unmodified (synced)    <---pull/clone from github---
 
 How I clone my project to organization 
 =========================================================
