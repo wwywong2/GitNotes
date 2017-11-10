@@ -7,6 +7,7 @@ git status - check status
 2.) add files to stage
 git add file.txt - add file to staging - now it is tracked (to be committed)
 git add -A . (add all recursively, and also file deletions are included)
+git add --all
 git add '*.txt' (need quote so Git can receive the wildcard before shell, and search recursively)
 
 git rm --cached file.txt (remove from staged, but keep in working dir)
@@ -14,6 +15,7 @@ git reset file.txt (to remove a file from staging)
 
 3.) commits
 git commit -m "Add title"
+git commit -am "delete stuff" (this will remove deleted files plus commit)
 
 git log (show commit history)
 git log --summary (more detail)
@@ -34,13 +36,19 @@ git diff HEAD
 git diff --staged
 
 7.) removing files from staged (reset will move current branch to the new location - and remove commits?)
-git reset file.txt
+(the only usage of reset file is to separate it back out to unstage so the stage can have the files you want for 1 commit -- that is if you add file unintentionally to the current commit)
+git reset file.txt (file cannot do --soft or --hard; so just put the file out of index -- become unstaged; if already unstaged, it does nothing)
+
+7a.) remove commit
+git reset --soft HEAD~ (move the branch which is pointed by HEAD to parent of HEAD - uncommit; and index remainds the same = the last commit -> staged contents)
+git reset --mixed HEAD~ (move the branch which is pointed by HEAD to parent of HEAD and make index same as HEAD - uncommit and last commit will become unstaged contents) <- --mixed is default
+git reset --hard HEAD~ (move the branch which is pointed by HEAD to parent of HEAD and make index same as HEAD PLUS also make the working dir same as HEAD - uncommit remove all changes; they are lost forever!)
+git reset 9e5e6a4 (move the branch which HEAD is currently pointing (e.g. master) to commit 9e5e6a4, make index the same; last commit will become unstaged contents)
 
 8.) undo changes (checkout will only move HEAD without moving branches)
 git checkout -- file.txt (-- is placeholder to tell git no option)
 git checkout stuff       # checkout the branch 'stuff'
 git checkout -- stuff    # checkout the file 'stuff'
-
 
 9.) branch
 git branch bname
