@@ -129,3 +129,22 @@ How to modify/rename/copy master
 11.) in local, if extra new_master, do this: git branch -d new_master
 12.) in local, if extra old_master, do this: git branch -d old_master
 
+
+
+How to get reflog from local (to revive branch/commit)
+=========================================================
+1.) git reflog
+2.) use commit info to do whatever you want (git reset, git checkout, etc)
+
+
+
+How to get reflog from remote (github) (to revive branch/commit)
+=========================================================
+1.) curl https://api.github.com/repos/wwywong2/hello-world2/events > test.txt
+2.) find the commit sha you needed
+3.) go click any commit get the url, e.g. https://github.com/wwywong2/hello-world2/commit/ccd3f433d4faf01a490cc0150ad7d672b876a62d
+4.) replace the sha by the one you needed, it will load that commit (detached), then click "Browse files"
+5.) click on Tree, and type new name to create branch from that commit
+6.) done. branch revived (so you can pull files and work with pass files)
+
+
