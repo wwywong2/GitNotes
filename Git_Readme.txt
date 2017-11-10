@@ -1,4 +1,3 @@
-
 Basic steps
 =========================================================
 1.) start
@@ -34,11 +33,14 @@ git stash apply (call this to re-apply changes after pull)
 git diff HEAD
 git diff --staged
 
-7.) removing files from staged
+7.) removing files from staged (reset will move current branch to the new location - and remove commits?)
 git reset file.txt
 
-8.) undo changes
+8.) undo changes (checkout will only move HEAD without moving branches)
 git checkout -- file.txt (-- is placeholder to tell git no option)
+git checkout stuff       # checkout the branch 'stuff'
+git checkout -- stuff    # checkout the file 'stuff'
+
 
 9.) branch
 git branch bname
@@ -67,10 +69,13 @@ git branch -d -f bname (this will work even if banch hasn't been merged)
 git push (no need param this time)
 
 
+
 Cycle of file in git (push is to update cloud)
 =========================================================
 untracked (new file) -add->   staged/tracked-modified (added)   -commit-> staged/tracked-unmodified (committed) ---push to github--->
 untracked (removed) <-remove- staged/tracked-modified (changed) <-modify- staged/tracked-unmodified (synced)    <---pull/clone from github---
+
+
 
 How I clone my project to organization 
 =========================================================
@@ -95,9 +100,24 @@ How I clone my project to organization
     upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
     upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
   d.) to sync anytime from original/remote, git fetch upstream
-  e.) git checkout master (reset branch to point to 'master'
+  e.) git checkout master (reset branch to point to 'master')
   f.) git merge upstream/master (merge code with upstream/master)
   g.) click the sync button in Github Desktop to push the merged update to server
 
 
+
+How to modify/rename/copy master
+=========================================================
+1.) git branch -m master old_master (rename master to old_master for removal later)
+2.) git checkout other_place
+3.) git branch new_master (create new branch call new_master)
+4.) git push testorig new_master (create new branch in web)
+5.) in web, set default to new_master, to free up master
+6.) in web, remove master
+7.) in web, create new branh from new_master, call it master
+8.) in web, set default to master (this time it is the new one)
+9.) in local, git branch -m new_master master (rename new master back to master)
+10.) in local, git checkout master
+11.) in local, if extra new_master, do this: git branch -d new_master
+12.) in local, if extra old_master, do this: git branch -d old_master
 
